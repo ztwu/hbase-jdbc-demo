@@ -58,6 +58,18 @@ public class HbaseTest {
         // 将列族添加到表中
         desc.addFamily(family2);
         // 创建表
+
+        //调用接口的时候splitKeys传入上面的值，那么他会自动创建5个region并且为之分配key的分区范围。
+        //startKey，最后一个没有endKey：
+        //第一个region：“ to 10000”
+        //第二个region：“10000 to 20000”
+        //第三个region：“20000 to 30000”
+        //第四个region：“30000 to 40000”
+        //第五个region：“40000 to ”
+        byte[][] splitKeys = new byte[][] { Bytes.toBytes("10000"),
+                Bytes.toBytes("20000"), Bytes.toBytes("30000"),
+                Bytes.toBytes("40000") };
+//        admin.createTable(desc, splitKeys); // 创建表,预分区
         admin.createTable(desc); // 创建表
     }
 
