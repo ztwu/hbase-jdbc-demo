@@ -1,4 +1,4 @@
-package com.iflytek.edu.hbase.test;
+package com.iflytek.edu.hbase.test.PartitionRowKey;
 
 import org.apache.hadoop.hbase.util.Bytes;
 import org.apache.hadoop.hbase.util.MD5Hash;

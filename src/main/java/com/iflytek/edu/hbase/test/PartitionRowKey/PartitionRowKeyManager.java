@@ -1,4 +1,4 @@
-package com.iflytek.edu.hbase.test;
+package com.iflytek.edu.hbase.test.PartitionRowKey;
 
 import org.apache.hadoop.hbase.util.Bytes;
 
@@ -27,6 +27,13 @@ public class PartitionRowKeyManager implements RowKeyGenerator,
         for(int i = 1; i < partition ; i ++) {
             splitKeys[i-1] = Bytes.toBytes((long)i);
         }
+        /**
+         *
+         * [0,1)***
+         * [1,2)***
+         * [2,3)***
+         *
+         */
         return splitKeys;
     }
 }

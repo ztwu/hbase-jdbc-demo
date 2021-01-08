@@ -1,10 +1,6 @@
-package com.iflytek.edu.hbase.test;
+package com.iflytek.edu.hbase.test.PartitionRowKey;
 
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
-import org.apache.hadoop.hbase.TableName;
-import org.apache.hadoop.hbase.client.HBaseAdmin;
+import com.iflytek.edu.hbase.test.PartitionRowKey.HashChoreWoker;
 import org.apache.hadoop.hbase.util.Bytes;
 
 public class Test {
@@ -14,7 +10,12 @@ public class Test {
         byte [][] splitKeys = worker.calcSplitKeys();
         for(byte[] b:splitKeys){
             System.out.println(Bytes.toString(b));
-            System.out.println(Bytes.toStringBinary(b));
+        }
+
+        PartitionRowKeyManager partitionRowKeyManager = new PartitionRowKeyManager();
+        byte [][] splitKeys2 = partitionRowKeyManager.calcSplitKeys();
+        for(byte[] b:splitKeys2){
+            System.out.println(Bytes.toString(b));
         }
 
 //        HBaseAdmin admin = new HBaseAdmin(HBaseConfiguration.create());
